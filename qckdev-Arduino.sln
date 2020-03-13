@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.Arduino", "qckdev.Arduino\qckdev.Arduino.vcxitems", "{6A6907AF-1870-42DE-96F9-4B56C7503822}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.ESP.WebServer", "qckdev.ESP.WebServer\qckdev.ESP.WebServer.vcxitems", "{392E88A0-556A-4927-8AE8-37D0A9178154}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.ESP.WiFi", "qckdev.ESP.WiFi\qckdev.ESP.WiFi.vcxitems", "{8A625961-956E-43CE-9629-2E834C833343}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C486C65-1687-484D-8C25-0295317DFFD5}
+	EndGlobalSection
+EndGlobal
