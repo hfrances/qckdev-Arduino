@@ -25,9 +25,8 @@ typedef WiFiMode_t WiFiMode;
 #error Platform not supported
 #endif
 
-extern WiFiMode StringToWiFiMode(const char* name);
-
-extern const char* WiFiModeToString(const WiFiMode value);
+	extern WiFiMode StringToWiFiMode(const char* name);
+	extern const char* WiFiModeToString(const WiFiMode value);
 
 #endif
 
