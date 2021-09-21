@@ -7,6 +7,8 @@
 
 #include "qckdev.Arduino.h"
 
+qckUtilClass qckUtil;
+
 /*
 void HelloWorld() {
     Serial.println("Hello world!");

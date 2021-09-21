@@ -39,10 +39,7 @@
 	class WEBSERVERRESPONSE_CLASSNAME {
 
 	public:
-		String corsAllowOrigin = emptyString;
-		String corsMaxAge = emptyString;
-		String corsAllowMethods = emptyString;
-		String corsAllowHeaders = emptyString;
+		::WEBSERVERNAME_CLASSNAME* server;
 
 		using RequestHandlerType = WEBSERVERNAME_NAMESPACE::RequestHandler<::WEBSERVERNAME_CLASSNAME>;
 
@@ -54,16 +51,20 @@
 		void onFS(const String &uri);
 		void onFS(const String &uri, FSMethod method, const String &path);
 		void onNotFound(::WEBSERVERNAME_CLASSNAME::THandlerFunction fn);
+		void send_P(int code, PGM_P content_type, PGM_P content);
 		void send(int code, const char* contentType, const String& content);
 		void send(int code);
 
 	private:
-		::WEBSERVERNAME_CLASSNAME* _server;
 		::WEBSERVERNAME_CLASSNAME::THandlerFunction _notFoundFunc;
 		::WEBSERVERNAME_CLASSNAME::THandlerFunction _notFoundHandlerForServer;
 		RequestHandlerType*  _currentHandler;
 		RequestHandlerType*  _firstHandler;
 		RequestHandlerType*  _lastHandler;
+		String corsAllowOrigin = emptyString;
+		String corsMaxAge = emptyString;
+		String corsAllowMethods = emptyString;
+		String corsAllowHeaders = emptyString;
 
 		//void addFSRequestHandler(RequestHandlerType* handler);
 		//RequestHandlerType* handleFSRequest(String& uri, FSMethod method);

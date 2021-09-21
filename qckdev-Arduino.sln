@@ -11,13 +11,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.ESP.WiFi", "qckdev.E
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.Arduino.LinkedList", "qckdev.Arduino.LinkedList\qckdev.Arduino.LinkedList.vcxitems", "{1F1ADD5B-F7A3-4D14-9BBB-6095B8FAE90B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.ESP.Updater", "qckdev.ESP.Updater\qckdev.ESP.Updater.vcxitems", "{3BC750AB-3FA0-4989-B70E-C534E20C76AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qckdev.ESP.WebUpdateServer", "qckdev.ESP.WebUpdateServer\qckdev.ESP.WebUpdateServer.vcxitems", "{ADB54044-AE1C-4841-B6BE-2564B81267C9}"
+EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		qckdev.Arduino.LinkedList\qckdev.Arduino.LinkedList.vcxitems*{1f1add5b-f7a3-4d14-9bbb-6095b8fae90b}*SharedItemsImports = 9
-		qckdev.ESP.WebServer\qckdev.ESP.WebServer.vcxitems*{392e88a0-556a-4927-8ae8-37d0a9178154}*SharedItemsImports = 9
-		qckdev.Arduino\qckdev.Arduino.vcxitems*{6a6907af-1870-42de-96f9-4b56c7503822}*SharedItemsImports = 9
-		qckdev.ESP.WiFi\qckdev.ESP.WiFi.vcxitems*{8a625961-956e-43ce-9629-2e834c833343}*SharedItemsImports = 9
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86

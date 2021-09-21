@@ -61,24 +61,24 @@ bool handleFileRead(WEBSERVERNAME_CLASSNAME& server, String path) {
 
 WEBSERVERRESPONSE_CLASSNAME::WEBSERVERRESPONSE_CLASSNAME(::WEBSERVERNAME_CLASSNAME& server) {
 
-	this->_server = &server;
+	this->server = &server;
 	this->_notFoundFunc = [this] {
-		if (!handleFileRead(*_server, _server->uri()))
+		if (!handleFileRead(*this->server, this->server->uri()))
 			this->handleNotFound();
 	};
-	_server->onNotFound(this->_notFoundFunc);
+	this->server->onNotFound(this->_notFoundFunc);
 }
 
 void WEBSERVERRESPONSE_CLASSNAME::on(const String &uri, ::WEBSERVERNAME_CLASSNAME::THandlerFunction handler) {
-	_server->on(uri, handler);
+	this->server->on(uri, handler);
 }
 
 void WEBSERVERRESPONSE_CLASSNAME::on(const String &uri, HTTPMethod method, ::WEBSERVERNAME_CLASSNAME::THandlerFunction fn) {
-	_server->on(uri, method, fn);
+	this->server->on(uri, method, fn);
 }
 
 void WEBSERVERRESPONSE_CLASSNAME::on(const String &uri, HTTPMethod method, ::WEBSERVERNAME_CLASSNAME::THandlerFunction fn, ::WEBSERVERNAME_CLASSNAME::THandlerFunction ufn) {
-	_server->on(uri, method, fn, ufn);
+	this->server->on(uri, method, fn, ufn);
 }
 
 void WEBSERVERRESPONSE_CLASSNAME::onFS(const String &uri) {
@@ -100,9 +100,14 @@ void WEBSERVERRESPONSE_CLASSNAME::allowCORS(const String allowOrigin, const int 
 	this->corsAllowHeaders = allowHeaders;
 }
 
+void WEBSERVERRESPONSE_CLASSNAME::send_P(int code, PGM_P content_type, PGM_P content) {
+	this->sendHeader();
+	this->server->send_P(code, content_type, content);
+}
+
 void WEBSERVERRESPONSE_CLASSNAME::send(int code, const char* contentType, const String& content) {
 	this->sendHeader();
-	_server->send(code, contentType, content);
+	this->server->send(code, contentType, content);
 }
 
 void WEBSERVERRESPONSE_CLASSNAME::send(int code) {
@@ -123,11 +128,11 @@ void WEBSERVERRESPONSE_CLASSNAME::send(int code) {
 void WEBSERVERRESPONSE_CLASSNAME::sendHeader() {
 	
 	if (corsAllowOrigin != emptyString) {
-		_server->sendHeader("Access-Control-Allow-Origin", this->corsAllowOrigin);
-		if (_server->method() == HTTP_OPTIONS) {
-			_server->sendHeader("Access-Control-Max-Age", this->corsMaxAge);
-			_server->sendHeader("Access-Control-Allow-Methods", this->corsAllowMethods);
-			_server->sendHeader("Access-Control-Allow-Headers", this->corsAllowHeaders);
+		this->server->sendHeader("Access-Control-Allow-Origin", this->corsAllowOrigin);
+		if (this->server->method() == HTTP_OPTIONS) {
+			this->server->sendHeader("Access-Control-Max-Age", this->corsMaxAge);
+			this->server->sendHeader("Access-Control-Allow-Methods", this->corsAllowMethods);
+			this->server->sendHeader("Access-Control-Allow-Headers", this->corsAllowHeaders);
 		}
 	}
 }
@@ -135,8 +140,8 @@ void WEBSERVERRESPONSE_CLASSNAME::sendHeader() {
 void WEBSERVERRESPONSE_CLASSNAME::handleNotFound() {
 	this->sendHeader();
 
-	if (_server->method() == HTTP_OPTIONS) {
-		_server->send(204);
+	if (this->server->method() == HTTP_OPTIONS) {
+		this->server->send(204);
 	}
 	else {
 		_notFoundHandlerForServer();
